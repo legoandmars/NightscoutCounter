@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29721.120
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NightscoutCounter", "NightscoutCounter\NightscoutCounter.csproj", "{9E6AD03B-50E1-4BE6-898B-ADDA601D2429}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E6AD03B-50E1-4BE6-898B-ADDA601D2429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6AD03B-50E1-4BE6-898B-ADDA601D2429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6AD03B-50E1-4BE6-898B-ADDA601D2429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6AD03B-50E1-4BE6-898B-ADDA601D2429}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFFB0CB9-2E14-4BC3-8FCF-FB76FC9C5A4F}
+	EndGlobalSection
+EndGlobal

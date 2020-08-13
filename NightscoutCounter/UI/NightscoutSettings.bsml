@@ -1,0 +1,9 @@
+﻿<vertical spacing='1' horizontal-fit='PreferredSize'>
+  <string-setting text='Nightscout Site URL' value='site-url' apply-on-change='true'></string-setting>
+  <checkbox-setting text='Show Direction' value='arrows-enabled' apply-on-change='true'></checkbox-setting>
+  <slider-setting text="High Glucose Threshold" min='120' max='300' increment='5' value='high-threshold' integer-only='true' apply-on-change='true'></slider-setting>
+  <slider-setting text="Low Glucose Threshold" min='40' max='120' increment='5' value='low-threshold' integer-only='true' apply-on-change='true'></slider-setting>
+  <color-setting text='Normal Glucose Color' value='normal-glucose-color' apply-on-change='true'></color-setting>
+  <color-setting text='High Glucose Color' value='high-glucose-color' apply-on-change='true'></color-setting>
+  <color-setting text='Low Glucose Color' value='low-glucose-color' apply-on-change='true'></color-setting>
+</vertical>
