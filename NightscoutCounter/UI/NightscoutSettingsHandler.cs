@@ -1,67 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using BeatSaberMarkupLanguage.Attributes;
 using NightscoutCounter.Configuration;
+using NightscoutCounter.Utilities;
 
 namespace NightscoutCounter.UI
 {
-    class NightscoutSettingsHandler : MonoBehaviour
+    internal class NightscoutSettingsHandler
     {
-        private Config _config = Config.Instance;
 
         [UIValue("site-url")]
         public string nightscoutURL
         {
-            get => _config.NightscoutSiteURL;
+            get => PluginConfig.Instance.NightscoutSiteURL;
             set
             {
                 if (value == "") value = "https://example.herokuapp.com";
-                _config.NightscoutSiteURL = value;
+                PluginConfig.Instance.NightscoutSiteURL = value;
             }
         }
+
+        [UIValue("display-options")]
+        private List<object> displayOptions = new object[] { "mg/dL (US)", "mmol/L (Other)"}.ToList();
+
+        [UIValue("display-choice")]
+        public string displayChoice
+        {
+            get => PluginConfig.Instance.DisplayType;
+            set
+            {
+                PluginConfig.Instance.DisplayType = value;
+                // since we're changing the data type, it's important to refresh the data manually.
+                NightscoutDataService.UpdateBloodSugar();
+            }
+        }
+
         [UIValue("arrows-enabled")]
         public bool arrowsEnabled
         {
-            get => _config.ArrowsEnabled;
-            set => _config.ArrowsEnabled = value;
+            get => PluginConfig.Instance.ArrowsEnabled;
+            set => PluginConfig.Instance.ArrowsEnabled = value;
         }
-
 
         [UIValue("high-threshold")]
         public int highThreshold
         {
-            get => _config.HighThreshold;
-            set =>  _config.HighThreshold = value;
+            get => PluginConfig.Instance.HighThreshold;
+            set => PluginConfig.Instance.HighThreshold = value;
         }
 
         [UIValue("low-threshold")]
         public int lowThreshold
         {
-            get => _config.LowThreshold;
-            set => _config.LowThreshold = value;
+            get => PluginConfig.Instance.LowThreshold;
+            set => PluginConfig.Instance.LowThreshold = value;
         }
+
         [UIValue("normal-glucose-color")]
         public Color normalGlucoseColor
         {
-            get => _config.colorFromConfigOption(_config.NormalGlucoseColor);
-            set => _config.NormalGlucoseColor = ColorUtility.ToHtmlStringRGB(value);
+            get => PluginConfig.Instance.ColorFromConfigOption(PluginConfig.Instance.NormalGlucoseColor);
+            set => PluginConfig.Instance.NormalGlucoseColor = ColorUtility.ToHtmlStringRGB(value);
         }
+
         [UIValue("high-glucose-color")]
         public Color highGlucoseColor
         {
-            get => _config.colorFromConfigOption(_config.HighGlucoseColor);
-            set => _config.HighGlucoseColor = ColorUtility.ToHtmlStringRGB(value);
+            get => PluginConfig.Instance.ColorFromConfigOption(PluginConfig.Instance.HighGlucoseColor);
+            set => PluginConfig.Instance.HighGlucoseColor = ColorUtility.ToHtmlStringRGB(value);
         }
 
         [UIValue("low-glucose-color")]
         public Color lowGlucoseColor
         {
-            get => _config.colorFromConfigOption(_config.LowGlucoseColor);
-            set => _config.LowGlucoseColor = ColorUtility.ToHtmlStringRGB(value);
+            get => PluginConfig.Instance.ColorFromConfigOption(PluginConfig.Instance.LowGlucoseColor);
+            set => PluginConfig.Instance.LowGlucoseColor = ColorUtility.ToHtmlStringRGB(value);
         }
     }
 }
