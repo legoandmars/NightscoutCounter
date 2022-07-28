@@ -14,6 +14,8 @@ namespace NightscoutCounter.Configuration
 
         public virtual string NightscoutSiteURL { get; set; } = "https://example.herokuapp.com";
 
+        public virtual string NightscoutSiteToken { get; set; } = "";
+
         public virtual string DisplayType { get; set; } = "mg/dL (US)";
         public virtual bool ArrowsEnabled { get; set; } = true;
 
