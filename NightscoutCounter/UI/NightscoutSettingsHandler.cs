@@ -21,6 +21,13 @@ namespace NightscoutCounter.UI
             }
         }
 
+        [UIValue("site-token")]
+        public string nightscoutToken
+        {
+            get => PluginConfig.Instance.NightscoutSiteToken;
+            set => PluginConfig.Instance.NightscoutSiteToken = value;
+        }
+
         [UIValue("display-options")]
         private List<object> displayOptions = new object[] { "mg/dL (US)", "mmol/L (Other)"}.ToList();
 

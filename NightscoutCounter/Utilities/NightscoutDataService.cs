@@ -75,7 +75,14 @@ namespace NightscoutCounter.Utilities
             if (siteURL.Substring(0, 7) == "http://") siteURL = "https://" + siteURL.Substring(7);
             if (siteURL.Substring(0, 8) != "https://") siteURL = "https://" + siteURL;
 
-            string responseString = await client.GetStringAsync(siteURL + "api/v1/entries.json?count=1");
+            string requestURL = siteURL + "api/v1/entries.json?count=1";
+
+            if (PluginConfig.Instance.NightscoutSiteToken.Length != 0)
+            {
+                requestURL = requestURL + "&token=" + PluginConfig.Instance.NightscoutSiteToken;
+            }
+
+            string responseString = await client.GetStringAsync(requestURL);
             NightscoutData nightscoutData = JsonConvert.DeserializeObject<NightscoutData>(responseString.Substring(1, responseString.Length - 2));
             nightscoutData.directionSymbol = ArrowValues(nightscoutData.direction);
             nightscoutData.color = ColorFromBG(nightscoutData.sgv);
